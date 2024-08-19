@@ -9,6 +9,9 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
     steps:
       - name: Check out
         uses: actions/checkout@v4
@@ -20,14 +23,16 @@ jobs:
         id: vars
         run: echo tag=${GITHUB_REF#refs/*/} >> $GITHUB_OUTPUT
 
-      - name: Build and publish
+      - name: Build
         run: |
           source .venv/bin/activate
           export PDM_BUILD_SCM_VERSION=$RELEASE_VERSION
-          make build-and-publish
+          make build
         env:
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
           RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+          
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
 
   deploy-docs:
     needs: publish

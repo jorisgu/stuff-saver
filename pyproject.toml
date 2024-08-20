@@ -36,6 +36,13 @@ skip_empty = true
 branch = true
 source = ["stuff_saver"]
 
+[tool.deptry]
+extend_exclude = ["tasks/*"]
+
+[tool.deptry.package_module_name_map]
+graphql-core = "graphql"
+pillow = "PIL"
+python-magic-bin = "magic"
 
 [tool.mypy]
 files = ["stuff_saver"]

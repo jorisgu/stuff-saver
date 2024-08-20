@@ -11,11 +11,11 @@ check: ## Run code quality tools.
 	@echo "🚀 Linting code: Running pre-commit"
 	@pdm run pre-commit run -a
 	@echo "🚀 Linting with ruff"
-	@pdm run ruff check test stuff_saver --config pyproject.toml
+	@pdm run ruff check tests stuff_saver --config pyproject.toml
 	@echo "🚀 Static type checking: Running mypy"
 	@pdm run mypy
 	@echo "🚀 Checking for obsolete dependencies: Running deptry"
-	@pdm run deptry .
+	@pdm run deptry . --config pyproject.toml
 
 .PHONY: test
 test: ## Test the code with pytest
@@ -31,14 +31,20 @@ build: clean-build ## Build wheel file
 clean-build: ## clean build artifacts
 	@rm -rf dist
 
-.PHONY: publish
-publish: ## publish a release to pypi.
-	@echo "🚀 Publishing."
-	@pdm publish --username __token__ --password $PYPI_TOKEN
+# .PHONY: publish
+# publish: ## publish a release to pypi.
+# 	@echo "🚀 Publishing."
+# 	@pdm publish --username __token__ --password $PYPI_TOKEN
 
 
-.PHONY: build-and-publish
-build-and-publish: build publish ## Build and publish.
+# .PHONY: build-and-publish
+# build-and-publish: build publish ## Build and publish.
+
+.PHONY: release
+release: clean-build ## Release a new version
+	@echo "🚀 Releasing a new version"
+	@pdm run python tasks/release.py
+	@gh release create $$(git describe --tags --abbrev=0) -t $$(git describe --tags --abbrev=0) -n $$(git log $$(git describe --tags --abbrev=0)..HEAD --oneline)
 
 .PHONY: docs-test
 docs-test: ## Test if documentation can be built without warnings or errors

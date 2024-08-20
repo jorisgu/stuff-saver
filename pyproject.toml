@@ -25,27 +25,41 @@ Homepage = "https://jorisgu.github.io/stuff-saver/"
 Repository = "https://github.com/jorisgu/stuff-saver"
 Documentation = "https://jorisgu.github.io/stuff-saver/"
 
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
 
-[tool.pdm.version]
-source = "scm"
+
+
+
+[tool.coverage.report]
+skip_empty = true
+
+[tool.coverage.run]
+branch = true
+source = ["stuff_saver"]
+
+
+
+[tool.mypy]
+files = ["stuff_saver"]
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+warn_unused_ignores = true
+show_error_codes = true
+
+
+[tool.pytest.ini_options]
+addopts = "-rsxX -l --tb=short --strict"
+testpaths = ["tests/"]
+python_files = ["tests/*/test*.py"]
+markers = ["skipif: conditionally skip tests"]
 
 [tool.pdm]
 distribution = true
-
-[tool.pdm.dev-dependencies]
-test = ["pytest>=7.2.0", "pytest-cov>=4.0.0"]
-dev = [
-  "deptry>=0.6.4",
-  "mypy>=0.981",
-  "pre-commit>=2.20.0",
-  "tox>=3.25.1",
-  "ruff>=0.0.235",
-]
-docs = [
-  "mkdocs>=1.4.2",
-  "mkdocs-material>=8.5.10",
-  "mkdocstrings[python]>=0.19.0",
-]
 
 [tool.pdm.build]
 excludes = [
@@ -61,20 +75,48 @@ excludes = [
 package-dir = "."
 includes = ["stuff_saver"]
 
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
+
+[tool.pdm.dev-dependencies]
+test = ["pytest>=7.2.0", "pytest-cov>=4.0.0"]
+dev = [
+    "deptry>=0.6.4",
+    "mypy>=0.981",
+    "pre-commit>=2.20.0",
+    "tox>=3.25.1",
+    "ruff>=0.0.235",
+    "parver>=0.5",
+    "rich>=13.7.1",
+    "towncrier>=24.7.1",
+]
 
 
-[tool.mypy]
-files = ["stuff_saver"]
-disallow_untyped_defs = true
-disallow_any_unimported = true
-no_implicit_optional = true
-check_untyped_defs = true
-warn_return_any = true
-warn_unused_ignores = true
-show_error_codes = true
+[tool.pdm.scripts]
+release = "python tasks/release.py"
+test = "pytest"
+coverage = {shell = """\
+                    python -m pytest \
+                              --verbosity=3 \
+                              --cov=src/pdm \
+                              --cov-branch \
+                              --cov-report term-missing \
+                              tests/
+                    """}
+tox = "tox"
+doc = {cmd = "mkdocs serve", help = "Start the dev server for docs preview"}
+lint = "pre-commit run --all-files"
+complete = {call = "tasks.complete:main", help = "Create autocomplete files for bash and fish"}
+
+
+[tool.pdm.version]
+source = "scm"
+
+docs = [
+  "mkdocs>=1.4.2",
+  "mkdocs-material>=8.5.10",
+  "mkdocstrings[python]>=0.19.0",
+]
+
+
 
 [tool.ruff]
 target-version = "py37"
@@ -120,19 +162,49 @@ ignore = [
   "E731",
 ]
 
-[tool.coverage.report]
-skip_empty = true
-
-[tool.coverage.run]
-branch = true
-source = ["stuff_saver"]
-
-
 [tool.ruff.per-file-ignores]
 "tests/*" = ["S101"]
 
-[tool.pytest.ini_options]
-addopts = "-rsxX -l --tb=short --strict"
-testpaths = ["tests/"]
-python_files = ["tests/*/test*.py"]
-markers = ["skipif: conditionally skip tests"]
+
+[tool.towncrier]
+package = "stuff_saver"
+filename = "CHANGELOG.md"
+issue_format = "[#{issue}](https://github.com/jorisgu/stuff-saver/issues/{issue})"
+directory = "news/"
+title_format = "## Release v{version} ({project_date})"
+underlines = ["", "", ""]
+
+  [[tool.towncrier.type]]
+  directory = "break"
+  name = "Breaking Changes"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "feature"
+  name = "Features & Improvements"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "bugfix"
+  name = "Bug Fixes"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "doc"
+  name = "Documentation"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "dep"
+  name = "Dependencies"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "removal"
+  name = "Removals and Deprecations"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "misc"
+  name = "Miscellany"
+  showcontent = true

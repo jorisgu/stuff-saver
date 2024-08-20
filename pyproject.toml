@@ -3,7 +3,6 @@ name = "stuff_saver"
 description = "Just save stuffs"
 authors = [{ name = "Joris GUERRY", email = "j@9h.gg" }]
 readme = "README.md"
-packages = [{ include = "stuff_saver" }]
 dynamic = ["version"]
 requires-python = ">=3.9,<4.0"
 dependencies = []

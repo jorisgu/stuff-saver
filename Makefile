@@ -11,7 +11,7 @@ check: ## Run code quality tools.
 	@echo "🚀 Linting code: Running pre-commit"
 	@pdm run pre-commit run -a
 	@echo "🚀 Linting with ruff"
-	@pdm run ruff test stuff_saver --config pyproject.toml
+	@pdm run ruff check test stuff_saver --config pyproject.toml
 	@echo "🚀 Static type checking: Running mypy"
 	@pdm run mypy
 	@echo "🚀 Checking for obsolete dependencies: Running deptry"

@@ -30,15 +30,12 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 
-
-
 [tool.coverage.report]
 skip_empty = true
 
 [tool.coverage.run]
 branch = true
 source = ["stuff_saver"]
-
 
 
 [tool.mypy]
@@ -79,37 +76,15 @@ includes = ["stuff_saver"]
 [tool.pdm.dev-dependencies]
 test = ["pytest>=7.2.0", "pytest-cov>=4.0.0"]
 dev = [
-    "deptry>=0.6.4",
-    "mypy>=0.981",
-    "pre-commit>=2.20.0",
-    "tox>=3.25.1",
-    "ruff>=0.0.235",
-    "parver>=0.5",
-    "rich>=13.7.1",
-    "towncrier>=24.7.1",
+  "deptry>=0.6.4",
+  "mypy>=0.981",
+  "pre-commit>=2.20.0",
+  "tox>=3.25.1",
+  "ruff>=0.0.235",
+  "parver>=0.5",
+  "rich>=13.7.1",
+  "towncrier>=24.7.1",
 ]
-
-
-[tool.pdm.scripts]
-release = "python tasks/release.py"
-test = "pytest"
-coverage = {shell = """\
-                    python -m pytest \
-                              --verbosity=3 \
-                              --cov=src/pdm \
-                              --cov-branch \
-                              --cov-report term-missing \
-                              tests/
-                    """}
-tox = "tox"
-doc = {cmd = "mkdocs serve", help = "Start the dev server for docs preview"}
-lint = "pre-commit run --all-files"
-complete = {call = "tasks.complete:main", help = "Create autocomplete files for bash and fish"}
-
-
-[tool.pdm.version]
-source = "scm"
-
 docs = [
   "mkdocs>=1.4.2",
   "mkdocs-material>=8.5.10",
@@ -117,12 +92,32 @@ docs = [
 ]
 
 
+[tool.pdm.scripts]
+release = "python tasks/release.py"
+test = "pytest"
+coverage = { shell = """\
+                    python -m pytest \
+                              --verbosity=3 \
+                              --cov=src/pdm \
+                              --cov-branch \
+                              --cov-report term-missing \
+                              tests/
+                    """ }
+tox = "tox"
+doc = { cmd = "mkdocs serve", help = "Start the dev server for docs preview" }
+lint = "pre-commit run --all-files"
+complete = { call = "tasks.complete:main", help = "Create autocomplete files for bash and fish" }
+
+
+[tool.pdm.version]
+source = "scm"
+
 
 [tool.ruff]
 target-version = "py37"
 line-length = 120
 fix = true
-select = [
+lint.select = [
   # flake8-2020
   "YTT",
   # flake8-bandit
@@ -155,15 +150,16 @@ select = [
   # tryceratops
   "TRY",
 ]
-ignore = [
+lint.ignore = [
   # LineTooLong
   "E501",
   # DoNotAssignLambda
   "E731",
 ]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101"]
+"tasks/*" = ["S603", "S607"]
 
 
 [tool.towncrier]
@@ -174,37 +170,37 @@ directory = "news/"
 title_format = "## Release v{version} ({project_date})"
 underlines = ["", "", ""]
 
-  [[tool.towncrier.type]]
-  directory = "break"
-  name = "Breaking Changes"
-  showcontent = true
+[[tool.towncrier.type]]
+directory = "break"
+name = "Breaking Changes"
+showcontent = true
 
-  [[tool.towncrier.type]]
-  directory = "feature"
-  name = "Features & Improvements"
-  showcontent = true
+[[tool.towncrier.type]]
+directory = "feature"
+name = "Features & Improvements"
+showcontent = true
 
-  [[tool.towncrier.type]]
-  directory = "bugfix"
-  name = "Bug Fixes"
-  showcontent = true
+[[tool.towncrier.type]]
+directory = "bugfix"
+name = "Bug Fixes"
+showcontent = true
 
-  [[tool.towncrier.type]]
-  directory = "doc"
-  name = "Documentation"
-  showcontent = true
+[[tool.towncrier.type]]
+directory = "doc"
+name = "Documentation"
+showcontent = true
 
-  [[tool.towncrier.type]]
-  directory = "dep"
-  name = "Dependencies"
-  showcontent = true
+[[tool.towncrier.type]]
+directory = "dep"
+name = "Dependencies"
+showcontent = true
 
-  [[tool.towncrier.type]]
-  directory = "removal"
-  name = "Removals and Deprecations"
-  showcontent = true
+[[tool.towncrier.type]]
+directory = "removal"
+name = "Removals and Deprecations"
+showcontent = true
 
-  [[tool.towncrier.type]]
-  directory = "misc"
-  name = "Miscellany"
-  showcontent = true
+[[tool.towncrier.type]]
+directory = "misc"
+name = "Miscellany"
+showcontent = true

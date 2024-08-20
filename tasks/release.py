@@ -27,7 +27,7 @@ PROJECT_DIR = Path(__file__).parent.parent
 
 
 def get_current_version() -> str:
-    return subprocess.check_output(["git", "describe", "--abbrev=0", "--tags"], cwd=PROJECT_DIR).decode().strip()  # noqa: S603, S607
+    return subprocess.check_output(["git", "describe", "--abbrev=0", "--tags"], cwd=PROJECT_DIR).decode().strip()
 
 
 def bump_version(pre: str | None = None, major: bool = False, minor: bool = False) -> str:

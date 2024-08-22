@@ -1,3 +1,8 @@
+# ## Release v0.1.7 (2024-08-22)
+
+No significant changes.
+
+
 # ## Release v0.1.6 (2024-08-22)
 
 No significant changes.

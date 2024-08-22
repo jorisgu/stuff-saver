@@ -44,7 +44,7 @@ clean-build: ## clean build artifacts
 release: clean-build ## Release a new version
 	@echo "🚀 Releasing a new version"
 	@pdm run python tasks/release.py
-	@gh release create $$(git describe --tags --abbrev=0) -t $$(git describe --tags --abbrev=0) -n $$(git log $$(git describe --tags --abbrev=0)..HEAD --oneline)
+	@gh release create $(git describe --tags --abbrev=0) -t $(git describe --tags --abbrev=0) -n "Release $(git describe --tags --abbrev=0)"
 
 .PHONY: docs-test
 docs-test: ## Test if documentation can be built without warnings or errors

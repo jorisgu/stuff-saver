@@ -3,10 +3,8 @@ name: release-main
 on:
   release:
     types: [published]
-    branches: [main]
 
 jobs:
-
   publish:
     runs-on: ubuntu-latest
     environment: release # needed for PyPi

@@ -24,8 +24,7 @@ class StuffSaver:
 
         Args:
             path (str, optional): Path to the temporary folder where the data will be saved. Defaults to "./tmp".
-            backend (_type_, optional): Backend to use for saving the data. It should have the methods load and dump.
-            . Defaults to None which uses the pickle backend.
+            backend (_type_, optional): Backend to use for saving the data. It should have the methods load and dump. Defaults to None which uses the pickle backend.
         """
         mkdir_p(path)
         self.path = path

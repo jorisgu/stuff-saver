@@ -1,11 +1,11 @@
 site_name: stuff-saver
-repo_url: https://github.com/jorisgu/stuff-saver
-site_url: https://jorisgu.github.io/stuff-saver
+repo_url: https://github.com/lakodo/stuff-saver
+site_url: https://lakodo.github.io/stuff-saver
 site_description: Just save stuffs
 site_author: Joris GUERRY
 edit_uri: edit/main/docs/
-repo_name: jorisgu/stuff-saver
-copyright: Maintained by <a href="https://jorisgu.com">Florian</a>.
+repo_name: lakodo/stuff-saver
+copyright: Maintained by <a href="https://9h.gg">9hgg</a>.
 
 nav:
   - Home: index.md
@@ -43,7 +43,7 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/jorisgu/stuff-saver
+      link: https://github.com/lakodo/stuff-saver
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/stuff-saver
 

@@ -13,7 +13,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/jorisgu/stuff-saver/issues
+Report bugs at https://github.com/lakodo/stuff-saver/issues
 
 If you are reporting a bug, please include:
 
@@ -44,7 +44,7 @@ Submit Feedback
 ~~~~~~~~~~~~~~~
 
 The best way to send feedback is to file an issue at
-https://github.com/jorisgu/stuff-saver/issues.
+https://github.com/lakodo/stuff-saver/issues.
 
 If you are proposing a new feature:
 

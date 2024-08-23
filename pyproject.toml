@@ -20,9 +20,9 @@ classifiers = [
 
 
 [project.urls]
-Homepage = "https://jorisgu.github.io/stuff-saver/"
-Repository = "https://github.com/jorisgu/stuff-saver"
-Documentation = "https://jorisgu.github.io/stuff-saver/"
+Homepage = "https://lakodo.github.io/stuff-saver/"
+Repository = "https://github.com/lakodo/stuff-saver"
+Documentation = "https://lakodo.github.io/stuff-saver/"
 
 [build-system]
 requires = ["pdm-backend"]
@@ -173,7 +173,7 @@ lint.ignore = [
 [tool.towncrier]
 package = "stuff_saver"
 filename = "CHANGELOG.md"
-issue_format = "[#{issue}](https://github.com/jorisgu/stuff-saver/issues/{issue})"
+issue_format = "[#{issue}](https://github.com/lakodo/stuff-saver/issues/{issue})"
 directory = "news/"
 title_format = "## Release v{version} ({project_date})"
 underlines = ["", "", ""]

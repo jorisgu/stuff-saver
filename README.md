@@ -1,15 +1,15 @@
 # stuff-saver
 
-[![Release](https://img.shields.io/github/v/release/jorisgu/stuff-saver)](https://img.shields.io/github/v/release/jorisgu/stuff-saver)
-[![Build status](https://img.shields.io/github/actions/workflow/status/jorisgu/stuff-saver/main.yml?branch=main)](https://github.com/jorisgu/stuff-saver/actions/workflows/main.yml?query=branch%3Amain)
-[![codecov](https://codecov.io/gh/jorisgu/stuff-saver/branch/main/graph/badge.svg)](https://codecov.io/gh/jorisgu/stuff-saver)
-[![Commit activity](https://img.shields.io/github/commit-activity/m/jorisgu/stuff-saver)](https://img.shields.io/github/commit-activity/m/jorisgu/stuff-saver)
-[![License](https://img.shields.io/github/license/jorisgu/stuff-saver)](https://img.shields.io/github/license/jorisgu/stuff-saver)
+[![Release](https://img.shields.io/github/v/release/lakodo/stuff-saver)](https://img.shields.io/github/v/release/lakodo/stuff-saver)
+[![Build status](https://img.shields.io/github/actions/workflow/status/lakodo/stuff-saver/main.yml?branch=main)](https://github.com/lakodo/stuff-saver/actions/workflows/main.yml?query=branch%3Amain)
+[![codecov](https://codecov.io/gh/lakodo/stuff-saver/branch/main/graph/badge.svg)](https://codecov.io/gh/lakodo/stuff-saver)
+[![Commit activity](https://img.shields.io/github/commit-activity/m/lakodo/stuff-saver)](https://img.shields.io/github/commit-activity/m/lakodo/stuff-saver)
+[![License](https://img.shields.io/github/license/lakodo/stuff-saver)](https://img.shields.io/github/license/lakodo/stuff-saver)
 
 Just save stuffs
 
-- **Github repository**: <https://github.com/jorisgu/stuff-saver/>
-- **Documentation** <https://jorisgu.github.io/stuff-saver/>
+- **Github repository**: <https://github.com/lakodo/stuff-saver/>
+- **Documentation** <https://lakodo.github.io/stuff-saver/>
 
 ## Getting started with your project
 
@@ -19,7 +19,7 @@ First, create a repository on GitHub with the same name as this project, and the
 git init -b main
 git add .
 git commit -m "init commit"
-git remote add origin git@github.com:jorisgu/stuff-saver.git
+git remote add origin git@github.com:lakodo/stuff-saver.git
 git push -u origin main
 ```
 
@@ -43,8 +43,8 @@ To enable the code coverage reports, see [here](https://fpgmaas.github.io/cookie
 
 - Create an API Token on [Pypi](https://pypi.org/).
 - Add the API Token to your projects secrets with the name `PYPI_TOKEN` by visiting
-[this page](https://github.com/jorisgu/stuff-saver/settings/secrets/actions/new).
-- Create a [new release](https://github.com/jorisgu/stuff-saver/releases/new) on Github.
+[this page](https://github.com/lakodo/stuff-saver/settings/secrets/actions/new).
+- Create a [new release](https://github.com/lakodo/stuff-saver/releases/new) on Github.
 Create a new tag in the form ``*.*.*``.
 
 For more details, see [here](https://fpgmaas.github.io/cookiecutter-pdm/features/cicd/#how-to-trigger-a-release).

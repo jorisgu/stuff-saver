@@ -50,6 +50,10 @@ release: clean-build ## Release a new version
 docs-test: ## Test if documentation can be built without warnings or errors
 	@pdm run mkdocs build -s
 
+.PHONY: docs-release
+docs-release: ## Build and release the documentation
+	@pdm run mkdocs gh-deploy --force
+
 .PHONY: docs
 docs: ## Build and serve the documentation
 	@pdm run mkdocs serve

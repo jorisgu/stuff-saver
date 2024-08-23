@@ -12,7 +12,7 @@ No significant changes.
 
 ### Bug Fixes
 
-- ignore tasks files when checking deptry ([#1](https://github.com/jorisgu/stuff-saver/issues/1))
+- ignore tasks files when checking deptry ([#1](https://github.com/lakodo/stuff-saver/issues/1))
 
 
 # ## Release v0.1.4 (2024-08-20)

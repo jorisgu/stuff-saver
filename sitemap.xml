@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://jorisgu.github.io/stuff-saver/</loc>
-         <lastmod>2024-08-22</lastmod>
+         <loc>https://lakodo.github.io/stuff-saver/</loc>
+         <lastmod>2024-08-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://jorisgu.github.io/stuff-saver/modules/</loc>
-         <lastmod>2024-08-22</lastmod>
+         <loc>https://lakodo.github.io/stuff-saver/modules/</loc>
+         <lastmod>2024-08-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
